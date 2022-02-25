@@ -1,5 +1,5 @@
 const readline = require('readline');
-const askGuess = readline.createInterface({
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
@@ -18,21 +18,23 @@ const checkGuess = (num) => {
 
     if(num === secretNumber) {
      console.log("Correct!");
-     return true;
+    return true;
     }
 }
 
-askGuess.question("Enter a guess: ",(guess) => {
-    let response = checkGuess(Number(guess));
-    if(!response){
-        askGuess.question("Enter a guess: ",(guess) => {
-            checkGuess(Number(guess));
-        })
-    }
-    else {
-        askGuess.close()
-    }
-})
+const askGuess = () =>
+{
+    rl.question("Enter a guess: ", (guess) => {
+        if(!checkGuess(Number(guess))) {
+            askGuess()
+        }
+        else {
+            console.log("You Win!")
+            rl.close()
+        }
+})}
+
+askGuess();
 
 
 
