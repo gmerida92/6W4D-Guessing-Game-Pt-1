@@ -1,4 +1,4 @@
-let secretNumber = 1;
+let secretNumber = 50;
 
 const checkGuess = (num) => {
     if(num > secretNumber) {
@@ -16,3 +16,6 @@ const checkGuess = (num) => {
      return true;
     }
 }
+
+
+// let test = checkGuess(50);
